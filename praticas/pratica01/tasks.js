@@ -1,22 +1,34 @@
-let tasks = [{
-    id:05,
-    name: "wallace",
-    completed: true
-    
+const tasks = [{
+    id: 1,
+    name: "estudar react",
+    completed: false
+},{
+    id: 2,
+    name: "estudar javascript",
+    completed: false
 }]
 
-function getTasks(){
-    return tasks
+const getTasks = () => tasks;
+
+const addTask = (taskName) => {
+    const novaTarefa = {
+        id: tasks.length + 1,
+        name: taskName,
+        completed: false
+    }
+    tasks.push(novaTarefa)
 }
 
-let idTarefas = tasks[tasks .lenght - 1]
-let Tarefas = [{
-    id: idTarefas .lenght + 1,
-    name:"wallace",
-    completed: true
-}]
+const removeTask = (taskId) => {
+    const index = tasks.findIndex((task) => task.id === taskId)
 
-addTasks = ({name: "batista", completed: true })
-addTasks = ({name: "andre", completed: true })
-console.log(Tarefas);
+    tasks.splice(index,1)
+}
 
+const updateTask = (taskId,props) => {
+    const index = tasks.findIndex((task) => task.id === taskId)
+
+    tasks[index] = {id: taskId,...props};
+}
+
+export {getTasks, removeTask, addTask, updateTask};
